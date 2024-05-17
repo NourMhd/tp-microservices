@@ -1,0 +1,34 @@
+syntax = "proto3";
+package magazine;
+
+// Définition du message magazine
+message Magazine {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+  // Ajouter d'autres champs de données pour les magazines au besoin
+}
+
+// Définition des messages de requête et de réponse pour les méthodes
+message GetMagazineRequest {
+  string magazine_id = 1;
+}
+
+message GetMagazineResponse {
+  Magazine magazine = 1;
+}
+
+message SearchMagazinesRequest {
+  string query = 1;
+}
+
+message SearchMagazinesResponse {
+  repeated Magazine magazines = 1;
+}
+
+// Définition du service de magazines
+service MagazineService {
+  rpc GetMagazine(GetMagazineRequest) returns (GetMagazineResponse);
+  rpc SearchMagazines(SearchMagazinesRequest) returns (SearchMagazinesResponse);
+  // Ajouter d'autres méthodes au besoin
+}
